@@ -1,0 +1,9 @@
+# The sources arrived with mixed line endings (build_dataset.py is CRLF, the rest LF).
+# Normalize in the repository, check out native. Keeps diffs clean cross-platform.
+* text=auto eol=lf
+*.py text eol=lf
+*.csv text eol=lf
+*.md text eol=lf
+
+*.png binary
+*.pt  binary

@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  # The shipped data must reproduce every number in the paper. Fast (~1 min),
+  # needs only numpy + pandas + rdkit. If this goes red, the data and the
+  # manuscript disagree. The heavier self-checks (physics bridge, GNN, headless
+  # training, baselines) run locally: python scripts/selfcheck.py --with-training
+  dataset:
+    name: dataset provenance (30 assertions)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install
+        run: pip install "numpy>=1.26" "pandas>=2.0" "rdkit>=2023.9"
+      - name: Verify the frozen dataset
+        run: python scripts/verify_dataset.py

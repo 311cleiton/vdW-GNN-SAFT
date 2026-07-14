@@ -1,0 +1,95 @@
+# Exact environment that produced the published results.
+#
+#   OS       : Windows 11 Pro
+#   Python   : 3.11.15
+#   Hardware : Intel Core i7-10700 @ 2.90 GHz, 16 GB RAM
+#   Compute  : CPU ONLY. There is no CUDA call anywhere in the codebase, and FeOs is a
+#              compiled CPU library, so the equation-of-state solve runs on CPU regardless.
+#              No accelerator is required to reproduce anything in the paper.
+#
+# This is a RECORD, not a cross-platform install target -- `pip install -r` may not resolve
+# on another OS or Python version. For a working install use `pip install -e .`, which pins
+# only the constraints that matter. Reach for this file when you need to know exactly what
+# was in the environment.
+#
+# The four packages that actually determine the numbers:
+#   torch 2.12.1+cpu | feos-torch 0.1.0 | feos 0.9.5 | rdkit 2026.3.3
+#
+aiohappyeyeballs==2.6.2
+aiohttp==3.14.1
+aiosignal==1.4.0
+annotated-types==0.7.0
+attrs==26.1.0
+certifi==2026.6.17
+charset-normalizer==3.4.7
+click==8.4.1
+colorama==0.4.6
+ConfigSpace==1.2.2
+contourpy==1.3.3
+customtkinter==6.0.0
+cycler==0.12.1
+darkdetect==0.8.0
+feos==0.9.5
+feos-torch==0.1.0
+filelock==3.29.0
+fonttools==4.63.0
+frozenlist==1.8.0
+fsspec==2026.4.0
+hpbandster==0.7.4
+idna==3.18
+ilthermopy==1.1.2
+Jinja2==3.1.6
+joblib==1.5.3
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+kiwisolver==1.5.0
+littleutils==0.2.4
+MarkupSafe==3.0.3
+matplotlib==3.11.0
+more-itertools==11.1.0
+mpmath==1.3.0
+msgpack==1.2.1
+multidict==6.7.1
+narwhals==2.22.1
+netifaces==0.11.0
+networkx==3.6.1
+numpy==2.4.6
+ogb==1.3.6
+outdated==0.2.2
+packaging==26.0
+pandas==3.0.3
+patsy==1.0.2
+pillow==12.2.0
+propcache==0.5.2
+protobuf==7.35.1
+psutil==7.2.2
+pyarrow==24.0.0
+pydantic==2.13.4
+pydantic_core==2.46.4
+pyparsing==3.3.2
+Pyro4==4.82
+python-dateutil==2.9.0.post0
+PyYAML==6.0.3
+ray==2.55.1
+rdkit==2026.3.3
+referencing==0.37.0
+requests==2.34.2
+rpds-py==2026.5.1
+scikit-learn==1.9.0
+scipy==1.17.1
+serpent==1.43
+si-units==0.11.4
+six==1.17.0
+statsmodels==0.14.6
+sympy==1.14.0
+tensorboardX==2.6.5
+threadpoolctl==3.6.0
+torch==2.12.1+cpu
+torch-geometric==2.8.0
+tqdm==4.68.3
+typing_extensions==4.15.0
+typing-inspection==0.4.2
+tzdata==2026.2
+urllib3==2.7.0
+xxhash==3.7.0
+yarl==1.24.2

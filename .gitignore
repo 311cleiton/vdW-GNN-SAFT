@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+
+# Model artifacts and run outputs (regenerated; not versioned)
+checkpoints/*.pt
+results/
+*.out
+*.log
+
+# ILThermo download cache
+data/cache/
+
+# Ray / tuning
+ray_results/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# NOTE: data/*.csv is deliberately NOT ignored. The frozen dataset is the artifact.

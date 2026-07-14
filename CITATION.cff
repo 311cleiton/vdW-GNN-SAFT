@@ -1,0 +1,64 @@
+cff-version: 1.2.0
+title: "vdW-GNN-SAFT: Physics-in-the-Loop Graph Neural Networks for Ionic Liquids - Differentiable SAFT with Volume-Aware Molecular Representations"
+message: >-
+  If you use this software or the bundled dataset, please cite the software entry below.
+  A manuscript describing the method is under review; once it appears, please cite that
+  instead - see preferred-citation.
+type: software
+
+# Software authorship for v1.0.0 is the lead author only.
+# TODO: the co-authors of the accompanying manuscript (Georgios M. Kontogeorgis and
+#       Xiaodong Liang, Technical University of Denmark) will be added as software authors
+#       in a subsequent version. Their names are kept intact under preferred-citation
+#       below, which describes the manuscript rather than this software release.
+authors:
+  - given-names: Cleiton
+    name-particle: S.
+    family-names: Beraldo
+    affiliation: "Department of Chemical Engineering (PQI), Polytechnic School (EP), University of Sao Paulo (USP), Sao Paulo-SP, Brazil"
+    orcid: "https://orcid.org/0009-0008-8798-2882"
+    email: "cleitonberaldo@alumni.usp.br"
+
+repository-code: "https://github.com/311cleiton/vdW-GNN-SAFT"
+license: MIT
+version: 1.0.0
+date-released: "2026-07-14"
+
+# After the first GitHub Release, Zenodo mints a DOI. Add it here as one line, e.g.:
+#   doi: "10.5281/zenodo.1234567"
+# (Use the CONCEPT DOI, labelled "Cite all versions" on the Zenodo record page.)
+
+keywords:
+  - ionic liquids
+  - PC-SAFT
+  - graph neural network
+  - equation of state
+  - differentiable physics
+  - density prediction
+  - van der Waals volume
+  - thermodynamics
+abstract: >-
+  vdW-GNN-SAFT is a physics-in-the-loop graph neural network that predicts PC-SAFT
+  pure-component parameters for ionic liquids directly from molecular structure. A
+  differentiable PC-SAFT engine (FeOs, via feos-torch) sits inside the training gradient,
+  so the network is supervised on experimental liquid density alone and never borrows a
+  reference parameter set. The molecular representation is made volume-aware by appending
+  a van der Waals volume descriptor to the pooled graph embedding. The repository contains
+  the full pipeline, a curated provenance-tracked dataset of 26,724 density measurements
+  over 1,092 ionic liquids from NIST ILThermo, and per-module self-checks.
+
+preferred-citation:
+  type: article
+  title: "vdW-GNN-SAFT: Physics-in-the-Loop Graph Neural Networks for Ionic Liquids - Differentiable SAFT with Volume-Aware Molecular Representations"
+  authors:
+    - given-names: Cleiton
+      name-particle: S.
+      family-names: Beraldo
+      orcid: "https://orcid.org/0009-0008-8798-2882"
+    - given-names: Georgios
+      name-particle: M.
+      family-names: Kontogeorgis
+    - given-names: Xiaodong
+      family-names: Liang
+  year: 2026
+  # On acceptance, add: journal, doi, volume, pages.

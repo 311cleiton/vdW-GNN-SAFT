@@ -1,5 +1,6 @@
 # vdW-GNN-SAFT
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21365213.svg)](https://doi.org/10.5281/zenodo.21365213)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10–3.12](https://img.shields.io/badge/python-3.10%E2%80%933.12-blue.svg)](pyproject.toml)
 [![CI](https://github.com/311cleiton/vdW-GNN-SAFT/actions/workflows/ci.yml/badge.svg)](https://github.com/311cleiton/vdW-GNN-SAFT/actions/workflows/ci.yml)

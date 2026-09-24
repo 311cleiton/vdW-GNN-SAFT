@@ -55,6 +55,16 @@ poisons the weights (NaN spreads, every later epoch stays NaN). Two guards preve
 with a non-finite loss are skipped (a no-op for healthy batches), and if validation collapses
 (non-finite MAPE / zero FeOs coverage) training stops early and keeps the best pre-collapse
 weights. `--grad-clip` (off by default) additionally caps the gradient norm.
+
+Reproducibility
+---------------
+A run is deterministic for a given seed AND CPU thread count. PyTorch splits sums across its
+threads, so another thread count adds the same numbers in another order; the rounding differences
+then grow into a different (equally valid) trajectory, as another seed would. `--threads`
+therefore defaults to 16 -- the thread count of the published runs (Intel Core i7-10700, 16
+logical CPUs) -- on every machine, and `--threads 0` uses every logical CPU instead (the behaviour
+before the flag existed). A CPU with other vector instructions (e.g. AVX-512) may still round
+differently.
 """
 
 from __future__ import annotations
@@ -598,6 +608,11 @@ def main():
     ap.add_argument("--grad-clip", type=float, default=0.0,
                     help="Max gradient norm (0 = off). Turn on (e.g. 1.0) if training blows up to NaN. "
                          "Off by default so it doesn't change ongoing experiments' dynamics.")
+    ap.add_argument("--threads", type=int, default=16,
+                    help="CPU threads for PyTorch, with or without the GUI (0 = every logical CPU). "
+                         "The thread count sets the order in which sums are accumulated, so it "
+                         "shapes the training trajectory the way the seed does. The default, 16, is "
+                         "the count behind the published checkpoints: keep it to reproduce them.")
     ap.add_argument("--bounds", choices=["off", "on"], default="on",
                     help="Pre-selects the bounds radio in the GUI (the GUI is authoritative). A bounded "
                          "head keeps predicted PC-SAFT params inside a physical box so FeOs stays in its "
@@ -623,6 +638,8 @@ def main():
 
     # We parse the core arguments first, then run the GUI to populate params, vdw, seeds, and out.
     args = ap.parse_args()
+    if args.threads < 0:
+        ap.error(f"--threads must be 0 (every logical CPU) or a positive count, got {args.threads}.")
 
     # Configure the run: headlessly from the CLI (--no-gui), or interactively from the GUI.
     if args.no_gui:
@@ -636,7 +653,8 @@ def main():
     log_filename = setup_logging()
     logging.info(f"Logging initialized. Saving logs to: {log_filename}")
 
-    torch.set_num_threads(max(1, os.cpu_count() or 1))   # feos-torch + GNN run on CPU
+    # feos-torch + GNN run on CPU. The thread count is part of the numerics: see --threads.
+    torch.set_num_threads(args.threads or max(1, os.cpu_count() or 1))
 
     n_runs = len(args.vdws) * len(args.seeds)
     logging.info(f"parameter set: {'5 (core + association)' if args.params == 'assoc' else '3 (core)'}")
@@ -644,6 +662,8 @@ def main():
                  + ("on (physical box, sigmoid-squashed head)" if args.bounds == "on"
                     else "off (softplus head)"))
     logging.info(f"gradient clipping: {'off' if args.grad_clip <= 0 else args.grad_clip}")
+    logging.info(f"CPU threads: {torch.get_num_threads()}  "
+                 f"(this machine has {os.cpu_count() or '?'} logical CPUs)")
     logging.info(f"vdW settings to sweep: {[VDW_LABELS[u] for u in args.vdws]}")
     logging.info(f"seeds to train: {args.seeds}")
     logging.info(f"total checkpoints: {n_runs}  "

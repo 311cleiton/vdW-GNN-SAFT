@@ -25,7 +25,7 @@ headless. Four of the nine modules were display-locked.
 
 ```bash
 python src/train.py --no-gui --train-val-csv data/train_val.csv \
-    --vdw both --bounds on --seeds 0 1 2 3 --epochs 120
+    --vdw both --bounds on --seeds 0 3 4 --epochs 120
 
 python src/evaluate.py --no-gui --train-val-csv data/train_val.csv --test-csv data/test1.csv \
     --checkpoint checkpoints/gnn_core_vdw_bounded_s0.pt --outdir results

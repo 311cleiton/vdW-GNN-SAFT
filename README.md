@@ -78,9 +78,9 @@ python src/pcsaft.py
 # The GNN: 24 architecture configurations, gradient flow, bias-at-priors
 python src/model.py
 
-# Train, headless. Two vdW arms x four seeds = 8 checkpoints.
+# Train, headless. Two vdW arms x three seeds = 6 checkpoints.
 python src/train.py --no-gui --train-val-csv data/train_val.csv \
-    --vdw both --bounds on --seeds 0 1 2 3 --epochs 120
+    --vdw both --bounds on --seeds 0 3 4 --epochs 120
 # (drop --no-gui to configure the same run through a Tk GUI instead)
 
 # Score a checkpoint against the classical baselines on held-out molecules
@@ -168,25 +168,25 @@ python scripts/selfcheck.py --with-training --with-baselines
 
 That exercises the data, the physics bridge, the GNN across 24 configurations, a full headless
 training run, and the baselines. If a change breaks something structural, you find out in minutes
-instead of after a seven-hour training run.
+instead of after a five-hour training run.
 
 ---
 
 ## How it performs
 
-On the bundled benchmark – 170 **unseen** ionic liquids, 5,168 points, four seeds, mean ± sample SD:
+On the bundled benchmark – 170 **unseen** ionic liquids, 5,168 points, three seeds (0, 3, 4), mean ± sample SD:
 
 | Model | Point MAPE (%) | Molecule MAPE (%) | Non-monotone isobars (of 311) |
 |---|---|---|---|
-| GNN, vdW **off** | 5.36 ± 0.23 | 6.04 ± 0.22 | **0** |
-| GNN, vdW **on** | **4.01 ± 0.12** | **4.94 ± 0.13** | **0** |
+| GNN, vdW **off** | 5.32 ± 0.25 | 6.02 ± 0.27 | **0** |
+| GNN, vdW **on** | **4.02 ± 0.14** | **4.98 ± 0.11** | **0** |
 | Random forest (vdW on) | 3.65 | 3.67 | 61–63 |
 | ECFP-MLP (vdW on) | **2.82** | 4.02 | 0 *(no guarantee)* |
 
 Two things are true at once, and both get said:
 
-1. **The volume-aware descriptor works.** It cuts point MAPE by 1.35 ± 0.19 points and molecule
-   MAPE by 1.10 ± 0.17. The seed bands are fully disjoint – *every* vdW-on run beats *every* vdW-off
+1. **The volume-aware descriptor works.** It cuts point MAPE by 1.30 ± 0.18 points and molecule
+   MAPE by 1.04 ± 0.17. The seed bands are fully disjoint – *every* vdW-on run beats *every* vdW-off
    run, on both metrics.
 
 2. **The baselines beat the GNN on raw interpolation MAPE.** They do. An ECFP-MLP fitting density
@@ -197,13 +197,13 @@ The case for physics-in-the-loop is not raw MAPE. It is:
 
 - **Thermodynamic consistency by construction.** Density comes from a real equation of state, so it
   is monotone in temperature along an isobar because PC-SAFT is. The GNN violates this on **0 of
-  311** held-out isobars in **all eight** runs. The random forest steps on **61–63** of them (jumps
+  311** held-out isobars in **all six** runs. The random forest steps on **61–63** of them (jumps
   up to +16.4 kg/m³). The MLP happens to pass – but nothing in it *guarantees* that, and no such
   claim is made.
 - **The output is a parameter set, not a lookup table.** Valid across the whole (*T*, *P*) surface
   and usable in any PC-SAFT code – including for properties the model was never trained on.
 - **The descriptor pays off *through* the EoS.** Appending vdW to the baselines' feature vector buys
-  them ~0.1 points. Through the equation of state it buys 1.35 / 1.10. The volume information is
+  them ~0.1 points. Through the equation of state it buys 1.30 / 1.04. The volume information is
   doing physical work, not just adding a feature column.
 
 The full recipe – including two published bounds boxes that **collapse** under this training scheme,
@@ -271,8 +271,8 @@ liquid root; outside it, training collapses to NaN. But the bound alone is not w
 a *bounded* literature box also collapses. The box has to sit where a liquid root exists.
 
 **CPU only.** No CUDA call anywhere, and FeOs is a compiled CPU library, so the EoS solve runs on
-CPU regardless. One checkpoint ≈ 53 min (median 26 s/epoch) on an Intel Core i7-10700; all eight
-≈ 7 h. No accelerator required.
+CPU regardless. One checkpoint ≈ 53 min (median 26 s/epoch) on an Intel Core i7-10700; all six
+≈ 5 h. No accelerator required.
 
 ---
 

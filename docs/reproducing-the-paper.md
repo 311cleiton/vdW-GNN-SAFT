@@ -8,10 +8,10 @@ Read this anyway if you are extending: the **bounds-box** section at the end is 
 transferable thing here. Two published boxes collapse under this training scheme, and one of them
 collapses while reporting perfect coverage.
 
-Eight checkpoints: 2 vdW arms (off / on) x 4 seeds (0, 1, 2, 3). CPU only.
-~53 min per checkpoint (median 26 s/epoch), ~7 h total on an Intel Core i7-10700 @ 2.90 GHz / 16 GB.
+Six checkpoints: 2 vdW arms (off / on) x 3 seeds (0, 3, 4). CPU only.
+~53 min per checkpoint (median 26 s/epoch), ~5 h total on an Intel Core i7-10700 @ 2.90 GHz / 16 GB.
 
-## 0. Check the data before you spend seven hours
+## 0. Check the data before you spend five hours
 
 ```bash
 python scripts/verify_dataset.py
@@ -19,27 +19,32 @@ python scripts/verify_dataset.py
 
 Thirty assertions. If any fires, stop: the shipped data and the paper disagree.
 
-## 1. Train the eight checkpoints
+## 1. Train the six checkpoints
 
 ```bash
 python src/train.py --no-gui \
     --train-val-csv data/train_val.csv \
     --conv PNA --hidden 256 --depth 6 --towers 4 --heads 4 \
-    --lr 1e-3 --batch-size 16 --epochs 120 \
-    --bounds on --vdw both --seeds 0 1 2 3
+    --lr 1e-3 --batch-size 16 --epochs 120 --threads 16 \
+    --bounds on --vdw both --seeds 0 3 4
 ```
 
-That is the whole sweep: 2 vdW arms × 4 seeds = 8 checkpoints, no display required.
+That is the whole sweep: 2 vdW arms × 3 seeds = 6 checkpoints, no display required.
+
+`--threads 16` is the default, and it matters. The thread count sets the order in which PyTorch
+accumulates sums, so another count trains a different trajectory from the same seed. 16 is the
+thread count of the published runs, whatever the machine. `--threads 0` uses every logical CPU,
+which reproduces them only on a machine with 16.
 
 > **Prefer the GUI?** Drop `--no-gui` and a Tk window opens. There the flags only *pre-tick* the
-> widgets and the **checkboxes are authoritative**: tick seeds 0, 1, 2 and 3 (not 4), tick **both**
-> vdW arms, leave bounds **on**, press Run. Same eight checkpoints, same names.
+> widgets and the **checkboxes are authoritative**: tick seeds 0, 3 and 4 (not 1 or 2), tick **both**
+> vdW arms, leave bounds **on**, press Run. Same six checkpoints, same names.
 
 Checkpoints land in `checkpoints/` with self-describing names:
 
 ```
-gnn_core_bounded_s0.pt  ...  gnn_core_bounded_s3.pt        (vdW off)
-gnn_core_vdw_bounded_s0.pt  ...  gnn_core_vdw_bounded_s3.pt (vdW on)
+gnn_core_bounded_s0.pt      gnn_core_bounded_s3.pt      gnn_core_bounded_s4.pt      (vdW off)
+gnn_core_vdw_bounded_s0.pt  gnn_core_vdw_bounded_s3.pt  gnn_core_vdw_bounded_s4.pt  (vdW on)
 ```
 
 Each seed runs its own self-check at the end: the training loss must fall, and FeOs coverage is

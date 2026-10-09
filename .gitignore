@@ -9,10 +9,11 @@ venv/
 .env
 
 # Model artifacts and run outputs (regenerated; not versioned)
-checkpoints/*.pt
+checkpoints/**/*.pt
 results/
 *.out
 *.log
+logs/
 
 # ILThermo download cache
 data/cache/

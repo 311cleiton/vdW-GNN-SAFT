@@ -54,7 +54,7 @@ def main() -> int:
     per_mol = frozen.drop_duplicates("smiles")
 
     print("=" * 78)
-    print("1. SPLIT SIZES  (Table 2 / Section 3.1)")
+    print("1. SPLIT SIZES  (Table 1 / Section 2.1)")
     print("=" * 78)
     check("train_val rows", len(tv), 21556)
     check("train rows", len(tr), 18259)
@@ -108,7 +108,7 @@ def main() -> int:
 
     print()
     print("=" * 78)
-    print("6. FRAGMENTS  (Section 3.8: the two dications)")
+    print("6. FRAGMENTS  (Sections 2.1 and 3.1: the two dications)")
     print("=" * 78)
     vc = per_mol.n_frags.value_counts()
     check("ILs with 2 fragments", int(vc.get(2, 0)), 1090)

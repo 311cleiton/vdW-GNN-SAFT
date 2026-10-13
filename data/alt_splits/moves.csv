@@ -1,0 +1,110 @@
+scheme,smiles,name,cation,n_rows,moved_from,moved_to
+split_65_15_20,C=CC[NH+](C)C.O=S(=O)([O-])C(F)(F)F,"N,N-dimethylprop-2-en-1-aminium trifluoromethanesulfonate",ammonium,6,train,test
+split_65_15_20,C=CC[NH+](CC)CC.O=S(=O)([O-])C(F)(F)F,"N,N-diethylprop-2-en-1-aminium trifluoromethanesulfonate",ammonium,6,train,test
+split_65_15_20,CC(=O)N[C@@H](CC(C)C)C(=O)[O-].CC[N+]1(C)CCOCC1,N-ethyl-N-methylmorpholinium N-acetyl-L-leucinate,morpholinium,5,train,test
+split_65_15_20,CC(=O)O[B-](F)(F)OC(C)=O.CCCCn1cc[n+](C)c1,1-butyl-3-methylimidazolium diacetoxydifluoroborate,imidazolium,5,train,test
+split_65_15_20,CC(=O)[O-].CCCC[n+]1ccn(C)c1,1-butyl-3-methylimidazolium acetate,imidazolium,149,train,test
+split_65_15_20,CC(=O)[O-].CC[n+]1ccn(C)c1,1-ethyl-3-methylimidazolium acetate,imidazolium,143,train,test
+split_65_15_20,CC(=O)[O-].C[n+]1ccn(CCC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F)c1,"3-methyl-1-(1H,1H,2H,2H-perfluorooctyl)imidazolium acetate",imidazolium,7,train,test
+split_65_15_20,CC(C)OC(=O)[C@H](C)[NH3+].CCCCCCCCCCCCOS(=O)(=O)[O-],"L-alanine, 1-methylethyl ester, dodecyl sulfate (1:1)",ammonium,12,train,test
+split_65_15_20,CC(O)=[N+](C)C.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,"N,N-dimethylacetamidium bis(trifluoromethanesulfonyl)amide",other,26,train,test
+split_65_15_20,CCCCCCCCC[P+](CC)(CC)CC.O=[N+]([O-])c1cn[n-]c1,triethylnonylphosphonium 4-nitropyrazolide,phosphonium,16,train,test
+split_65_15_20,CCCCCCCCCn1cc[n+](C)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,1-methyl-3-nonylimidazolium bis(trifluoromethanesulfonyl)imide,imidazolium,37,train,test
+split_65_15_20,CCCCCCCCOS(=O)(=O)[O-].CCCC[n+]1ccn(C)c1,1-butyl-3-methylimidazolium octyl sulfate,imidazolium,123,train,test
+split_65_15_20,CCCCCCCC[N+](CC)(CC)CC.O=S(=O)(F)[N-]S(=O)(=O)F,"N,N,N-triethyloctanaminium bis(fluorosulfonyl)amide",ammonium,13,train,test
+split_65_15_20,CCCCCCCC[P+](CC)(CC)CC.Ic1cc[n-]n1,triethyl(octyl)phosphonium 3-iodopyrazolide,phosphonium,6,train,test
+split_65_15_20,CCCCCCC[n+]1ccn(C)c1.O=S(=O)([O-])C(F)(F)F,1-heptyl-3-methylimidazolium trifluoromethanesulfonate,imidazolium,8,train,test
+split_65_15_20,CCCCCC[n+]1cc(C)cc(C)c1CCCCC.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,"1-hexyl-3,5-dimethyl-2-pentylpyridinium bis(trifluoromethylsulfonyl)imide",pyridinium,10,train,test
+split_65_15_20,CCCCCC[n+]1cccc(C)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,"1-hexyl-3-methylpyridinium 1,1,1-trifluoro-N-[(trifluoromethyl)sulfonyl]methanesulfonamide",pyridinium,23,train,test
+split_65_15_20,CCCCCC[n+]1ccn(C)c1.F[P-](F)(F)(F)(F)F,1-hexyl-3-methylimidazolium hexafluorophosphate,imidazolium,151,train,test
+split_65_15_20,CCCCCCn1cc[n+](C)c1.O=C1[N-]S(=O)(=O)c2ccccc21,1-hexyl-3-methylimidazolium saccharinate,imidazolium,34,train,test
+split_65_15_20,CCCCN[c+]1c(N(CC)CC)c1N(CC)CC.F[B-](F)(F)F,bis(diethylamino)(butylamino)cyclopropenium tetrafluoroborate,cyclopropenium,8,train,test
+split_65_15_20,CCCCO[PH](=O)[O-].CCCC[N+]1(C)CCCCC1,1-butyl-1-methylpiperidin-1-ium butyl phosphonate,piperidinium,13,train,test
+split_65_15_20,CCCC[N+](C)(CCCC)CCCC.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,tributylmethylammonium bis((trifluoromethyl)sulfonyl)imide,ammonium,20,train,test
+split_65_15_20,CCCC[N+]1(C)CCCC1.N#C[C-](C#N)C#N,1-butyl-1-methylpyrrolidinium tricyanomethanide,pyrrolidinium,63,train,test
+split_65_15_20,CCCC[N+]1(C)[C@@H]2CC[C@H]1C[C@@H](O)C2.NCC(=O)[O-],N-butyltropinium glycinate,pyrrolidinium,10,train,test
+split_65_15_20,CCCC[NH3+].O=C[O-],butylammonium formate,ammonium,9,train,test
+split_65_15_20,CCCC[P+](CCCC)(CCCC)CCCC.NCCS(=O)(=O)[O-],tetrabutylphosphonium 2-aminoethanesulfonate,phosphonium,9,train,test
+split_65_15_20,CCCC[P+](CCCC)(CCCC)CCCC.O=C([O-])c1cccs1,tetrabutylphosphonium thiophene-2-carboxylate,phosphonium,9,train,test
+split_65_15_20,CCCC[P+](CCCC)(CCCC)CCCC.O=S(=O)([O-])CCN(CCO)CCO,tetrabutylphosphonium 2-(bis(2-hydroxyethyl)amino)ethanesulfonate,phosphonium,14,train,test
+split_65_15_20,CCCC[n+]1ccc(C)cc1.N#C[C-](C#N)C#N,1-butyl-4-methylpyridinium tricyanomethanide,pyridinium,80,train,test
+split_65_15_20,CCCC[n+]1cccc(C)c1.F[P-](F)(F)(F)(F)F,1-butyl-3-methylpyridinium hexafluorophosphate,pyridinium,17,train,test
+split_65_15_20,CCCC[n+]1ccn(C)c1.[Cl-],1-butyl-3-methylimidazolium chloride,imidazolium,72,train,test
+split_65_15_20,CCCC[n+]1ccn(CC)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,1-butyl-3-ethylimidazolium bis[(trifluoromethyl)sulfonyl]imide,imidazolium,11,train,test
+split_65_15_20,CCCCn1cc[n+](C)c1.COc1cccc([B-](F)(F)F)c1,1-butyl-3-methyl-1H-imidazol-3-ium trifluoro(3-methoxyphenyl)borate,imidazolium,12,train,test
+split_65_15_20,CCCCn1cc[n+](C)c1.O=C1O[B-](F)(F)OC1=O,1-butyl-3-methylimidazolium difluoromono(oxalato)borate,imidazolium,5,train,test
+split_65_15_20,CCC[N+]1(C)CCCC1.O=S(=O)(F)[N-]S(=O)(=O)F,1-methyl-1-propylpyrrolidinium bis(fluorosulfonyl)amide,pyrrolidinium,87,train,test
+split_65_15_20,CCC[NH+](C)CCC.O=S(=O)([O-])C(F)(F)F,N-methyl-N-propylpropan-1-aminium trifluoromethanesulfonate,ammonium,5,train,test
+split_65_15_20,CCC[n+]1ccccc1.F[B-](F)(F)F,1-propylpyridinium tetrafluoroborate,pyridinium,25,train,test
+split_65_15_20,CCCn1cc[n+](CC)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,1-ethyl-3-propylimidazolium bis(trifluoromethylsulfonyl)imide,imidazolium,24,train,test
+split_65_15_20,CCOCC[n+]1ccccc1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,1-(2-ethoxyethyl)pyridinium bis((trifluoromethyl)sulfonyl)amide,pyridinium,9,train,test
+split_65_15_20,CCOCn1cc[n+](C)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,3-(ethoxymethyl)-1-methylimidazolium bis((trifluoromethyl)sulfonyl)amide,imidazolium,9,train,test
+split_65_15_20,CC[N+](CC)(CC)CC.O=C(O[B-](F)(F)OC(=O)C(F)(F)F)C(F)(F)F,tetraethylammonium difluorobis(trifluoroacetato)borate,ammonium,5,train,test
+split_65_15_20,CC[N+](CCO)(CCO)CCO.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,"N-ethyl-N,N,N-tris(2-hydroxyethyl)ammonium bis(trifluoromethanesulfonyl)amide",ammonium,76,train,test
+split_65_15_20,CC[n+]1ccn(C)c1.F[B-](F)(F)F,1-ethyl-3-methylimidazolium tetrafluoroborate,imidazolium,197,train,test
+split_65_15_20,COC[n+]1ccn(C)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,1-(methoxymethyl)-3-methylimidazolium bis((trifluoromethyl)sulfonyl)amide,imidazolium,9,train,test
+split_65_15_20,C[N+](C)(C)CCO.NCC(=O)[O-],"2-hydroxy-N,N,N-trimethylethanaminium glycinate",ammonium,22,train,test
+split_65_15_20,C[N+]1(CCCO)CCOCC1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,4-(3-hydroxypropyl)-4-methylmorpholinium bis(trifluoromethylsulfonyl)amide,morpholinium,8,train,test
+split_65_15_20,Cn1cc[n+](C)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,"1,3-dimethylimidazolium bis((trifluoromethyl)sulfonyl)amide",imidazolium,33,train,test
+split_65_15_20,Cn1cc[n+](CCCCS(=O)(=O)O)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,1-(4-sulfobutyl)-3-methylimidazolium bis(trifluoromethanesulfonyl)imide,imidazolium,38,train,test
+split_75_15_10,Brc1c[n-]cn1.CCCCCCCC[P+](CC)(CC)CC,triethyl(octyl)phosphonium 4-bromoimidazolide,phosphonium,6,test,train
+split_75_15_10,C1CC[NH2+]CC1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,piperidinium bis(trifluoromethanesulfonyl)imide,piperidinium,6,test,train
+split_75_15_10,C=CC(=O)NC(C)(C)CS(=O)(=O)[O-].Cn1cc[n+](C)c1Cl,"2-chloro-1,3-dimethylimidazolium 2-acrylamido-2-methylpropane-1-sulfonate",imidazolium,8,test,train
+split_75_15_10,CC(C)COC(=O)CC[C@H]([NH3+])C(=O)OCC(C)C.CCCCCCCCCCCCOS(=O)(=O)[O-],"(S)-1,5-diisobutoxy-1,5-dioxopentan-2-aminium dodecyl sulfate",ammonium,5,test,train
+split_75_15_10,CC(C)COC(=O)[C@H](C)[NH3+].CCCCCCCCCCCCOS(=O)(=O)[O-],(S)-1-isobutoxy-1-oxopropan-2-aminium dodecyl sulfate,ammonium,12,test,train
+split_75_15_10,CC1(C)CC(=O)C=C([O-])C1.CCCCCCCC[P+](CCCC)(CCCC)CCCC,"tributyl(octyl)phosphonium 4,4-dimethyl-2,6-dioxocyclohexan-1-ide",phosphonium,13,test,train
+split_75_15_10,CC1(C)CC(OS(=O)(=O)[O-])CC(C)(C)N1[O].C[NH+](C)CCO,"(2-hydroxyethyl)dimethylammonium 4-sulfonatooxy-2,2,6,6-tetramethylpiperidine-1-yloxyl",ammonium,10,test,train
+split_75_15_10,CCC(=O)[O-].C[NH2+]CCO,2-hydroxy-N-methylethanaminium propionate,ammonium,311,test,train
+split_75_15_10,CCCCC(=O)[O-].OCC[NH2+]c1ccccc1,N-(2-hydroxyethyl)benzenaminium pentanoate,ammonium,11,test,train
+split_75_15_10,CCCCCC(=O)[O-].C[NH+]1CCOCC1,N-methylmorpholinium hexanoate,morpholinium,11,test,train
+split_75_15_10,CCCCCCCCCC(=O)[O-].C[NH+]1CCOCC1,N-methylmorpholinium decanoate,morpholinium,11,test,train
+split_75_15_10,CCCCCCCCCCCCCCCCCC[n+]1ccn(C)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,3-methyl-1-octadecyl-1H-imidazolium bis((trifluoromethyl)sulfonyl)amide,imidazolium,15,test,train
+split_75_15_10,CCCCCCCCCCCC[N+](CC)(CC)CC.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,"N,N,N-triethyldodecan-1-aminium bis((trifluoromethyl)sulfonyl)amide",ammonium,40,test,train
+split_75_15_10,CCCCCCCCCCCn1cc[n+](C)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,3-methyl-1-undecyl-1H-imidazol-3-ium bis((trifluoromethyl)sulfonyl)amide,imidazolium,18,test,train
+split_75_15_10,CCCCCCCC[P+](CC)(CC)CC.Cc1ncc([N+](=O)[O-])[n-]1,triethyloctylphosphonium 2-methyl-5-nitroimidazolide,phosphonium,16,test,train
+split_75_15_10,CCCCCCCC[P+](CCCC)(CCCC)CCCC.FC(F)(F)C(F)(F)[P-](F)(F)(F)(C(F)(F)C(F)(F)F)C(F)(F)C(F)(F)F,tributyloctylphosphonium tris(pentafluoroethyl)trifluorophosphate,phosphonium,14,test,train
+split_75_15_10,CCCCCCCC[n+]1cccc2ccccc21.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,1-octylquinolinium bis[(trifluoromethyl)sulfonyl]imide,pyridinium,9,test,train
+split_75_15_10,CCCCCCCC[n+]1ccn(C)c1.O=P([O-])(O)OP(=O)(O)O,3-methyl-1-octylimidazolium trihydrogen diphosphate,imidazolium,8,test,train
+split_75_15_10,CCCCCCCC[n+]1ccn(C)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)C(F)(F)F)C(F)(F)C(F)(F)F,1-octyl-3-methylimidazolium bis(perfluoroethylsulfonyl)imide,imidazolium,49,test,train
+split_75_15_10,CCCCCCCCn1cc[n+](C)c1.N#C[C-](C#N)C#N,1-methyl-3-octylimidazolium tricyanomethanide,imidazolium,34,test,train
+split_75_15_10,CCCCCCC[n+]1ccccc1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,1-heptylpyridinium bis(trifluoromethylsulfonyl)amide,pyridinium,13,test,train
+split_75_15_10,CCCCCCO[PH](=O)[O-].CCCCCC[N+]1(C)CCCC1,N-hexyl-N-methylpyrrolidinium hexylphosphonate,pyrrolidinium,13,test,train
+split_75_15_10,CCCCCC[n+]1ccccc1.F[B-](F)(F)F,1-hexylpyridinium tetrafluoroborate,pyridinium,79,test,train
+split_75_15_10,CCCCCC[n+]1ccn(C)c1.O=S(=O)([O-])C(F)(F)F,1-hexyl-3-methylimidazolium trifluoromethanesulfonate,imidazolium,107,test,train
+split_75_15_10,CCCCCC[n+]1ccn(C)c1.O=[N+]([O-])c1cn[n-]c1,1-hexyl-3-methylimidazolium 4-nitropyrazolide,imidazolium,16,test,train
+split_75_15_10,CCCCCC[n+]1cn(CCCCS(=O)(=O)O)cn1.O=S(=O)([O-])C(F)(F)F,"1-hexyl-4-(4-sulfobutyl)-1H-1,2,4-triazolium trifluoromethanesulfonate",other,11,test,train
+split_75_15_10,CCCCCCn1cc[n+](C)c1.FC(F)(F)C(F)(F)[P-](F)(F)(F)(C(F)(F)C(F)(F)F)C(F)(F)C(F)(F)F,1-hexyl-3-methylimidazolium tris(pentafluoroethyl)trifluorophosphate,imidazolium,87,test,train
+split_75_15_10,CCCCCn1cc[n+](CC)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,1-ethyl-3-pentylimidazolium bis((trifluoromethyl)sulfonyl)imide,imidazolium,13,test,train
+split_75_15_10,CCCC[N+](C)(C)CCN(C)C.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,"N-(2-(dimethylamino)ethyl)-N,N-dimethylbutan-1-aminium bis((trifluoromethyl)sulfonyl)amide",ammonium,17,test,train
+split_75_15_10,CCCC[N+](C)(CCCC)CCCC.C[C@@H](O)[C@H](N)C(=O)[O-],"N,N-dibutyl-N-methyl-1-butanaminium L-threoninate",ammonium,9,test,train
+split_75_15_10,CCCC[N+](C)(CCCC)CCCC.NCCCC[C@H](N)C(=O)[O-],"N,N-dibutyl-N-methyl-1-butanaminium L-lysinate",ammonium,9,test,train
+split_75_15_10,CCCC[N+](CCCC)(CCCC)CCCC.O=C([O-])[C@@H]1CCCN1,tetrabutylammonium L-prolinate,ammonium,13,test,train
+split_75_15_10,CCCC[N+]1(C)CCCC1.N#C[N-]S(=O)(=O)C(F)(F)F,N-methyl-N-butylpyrrolidinium cyano(trifluoromethanesulfonyl)imide,pyrrolidinium,7,test,train
+split_75_15_10,CCCC[P+](CCCC)(CCCC)CCCC.O=S(=O)([O-])CC(O)CN1CCOCC1,tetrabutylphosphonium 2-hydroxy-3-morpholinopropanesulfonate,phosphonium,13,test,train
+split_75_15_10,CCCC[n+]1cc(C)cc(C)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,"1-butyl-3,5-dimethylpyridinium bis(trifluoromethylsulfonyl)amide",pyridinium,15,test,train
+split_75_15_10,CCCC[n+]1ccccc1.O=C([O-])C(F)(F)F,1-butylpyridinium trifluoroacetate,pyridinium,11,test,train
+split_75_15_10,CCCC[n+]1ccn(C)c1.F[P-](F)(F)(F)(F)F,1-butyl-3-methylimidazolium hexafluorophosphate,imidazolium,273,test,train
+split_75_15_10,CCCCn1cc[n+](C)c1.O=S(=O)(F)[N-]S(=O)(=O)F,1-butyl-3-methylimidazolium bis(fluorosulfonyl)imide,imidazolium,13,test,train
+split_75_15_10,CCCCn1cc[nH+]c1.O=S(=O)([O-])C(F)(F)F,N-butylimidazolium trifluoromethanesulfonate,imidazolium,9,test,train
+split_75_15_10,CCC[N+]1(C)CCCC1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,1-methyl-1-propylpyrrolidinium bis[(trifluoromethyl)sulfonyl]imide,pyrrolidinium,147,test,train
+split_75_15_10,CCC[n+]1ccccc1.N#C[N-]C#N,1-propylpyridinium dicyanamide,pyridinium,8,test,train
+split_75_15_10,CCC[n+]1ccn(C)c1.NCC(=O)[O-],1-propyl-3-methylimidazolium glycine,imidazolium,10,test,train
+split_75_15_10,CCN(C)c1c(N(C)CC)[c+]1N(C)CC.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,tris(ethylmethylamino)cyclopropenium bis(trifluoromethanesulfonyl)amide,cyclopropenium,8,test,train
+split_75_15_10,CCOCC[N+]1(C)CCCC1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,1-(2-ethoxyethyl)-1-methylpyrrolidinium bis((trifluoromethyl)sulfonyl)amide,pyrrolidinium,9,test,train
+split_75_15_10,CCOS(=O)(=O)[O-].CCn1cc[n+](CC)c1,"1,3-diethylimidazolium ethyl sulfate",imidazolium,15,test,train
+split_75_15_10,CCO[PH](=O)[O-].CC[N+]1(C)CCCCC1,1-ethyl-1-methylpiperidin-1-ium ethyl phosphonate,piperidinium,13,test,train
+split_75_15_10,CC[N+](C)(C)CCCO.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,"N-3-hydroxypropyl-N,N-dimethyl-N-ethylammonium bis(trifluoromethanesulfonyl)amide",ammonium,76,test,train
+split_75_15_10,CC[P+](CC)(CC)CCOC.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,triethyl(2-methoxyethyl)phosphonium bis((trifluoromethyl)sulfonyl)amide,phosphonium,110,test,train
+split_75_15_10,CC[n+]1ccn(C)c1.O=S(=O)([O-])C(F)(F)F,1-ethyl-3-methylimidazolium trifluoromethanesulfonate,imidazolium,229,test,train
+split_75_15_10,CC[n+]1ccn(C)c1.O=S(=O)([O-])O,1-ethyl-3-methylimidazolium hydrogen sulfate,imidazolium,73,test,train
+split_75_15_10,CC[n+]1ccn(CCOC)c1.N#C[S-],1-ethyl-3-(2-methoxyethyl)imidazolium thiocyanate,imidazolium,11,test,train
+split_75_15_10,CC[n+]1ccsc1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,3-ethylthiazolium bis((trifluoromethyl)sulfonyl)amide,other,18,test,train
+split_75_15_10,CCc1cccc[n+]1C.COS(=O)(=O)[O-],2-ethyl-1-methylpyridinium methyl sulfate,pyridinium,11,test,train
+split_75_15_10,CCn1cc[n+](C)c1.FC(F)(F)C(F)(F)[P-](F)(F)(F)(C(F)(F)C(F)(F)F)C(F)(F)C(F)(F)F,1-ethyl-3-methylimidazolium tris(pentafluoroethyl)trifluorophosphate,imidazolium,88,test,train
+split_75_15_10,COCC[n+]1ccn(C)c1.C[C@@H](O)[C@H](N)C(=O)[O-],1-(2-methoxyethyl)-3-methylimidazolium threonine,imidazolium,9,test,train
+split_75_15_10,C[N+](C)(C)CCO.O=C([O-])CO,choline glycolate,ammonium,8,test,train
+split_75_15_10,C[n+]1ccn(Cc2ccc3ccccc3c2)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,3-methyl-1-(naphthalen-2-ylmethyl)-1H-imidazol-3-ium bis((trifluoromethyl)sulfonyl)amide,imidazolium,10,test,train
+split_75_15_10,Cn1cc[n+](C(C)(C)C)c1.O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F,1-tert-butyl-3-methylimidazolium bis(trifluoromethylsulfonyl)imide,imidazolium,8,test,train
+split_75_15_10,Cn1cc[n+](CCN)c1.F[P-](F)(F)(F)(F)F,1-(2-aminoethyl)-3-methyl-1H-imidazolium hexafluorophosphate(V),imidazolium,13,test,train
+split_75_15_10,Cn1cc[nH+]c1.O=S(=O)([O-])O,1-methylimidazolium hydrogen sulfate,imidazolium,9,test,train
+split_75_15_10,O=S(=O)([N-]S(=O)(=O)C(F)(F)F)C(F)(F)F.OCc1cccc[nH+]1,2-(hydroxymethyl)pyridinium bis[(trifluoromethane)sulfonyl]imide,pyridinium,6,test,train

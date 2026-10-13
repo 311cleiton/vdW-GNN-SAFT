@@ -228,6 +228,10 @@ and why coverage alone fails to notice one of them – is in
 **Read [`data/README.md`](data/README.md) before using the `vdW` column.** It is not the additive
 hard-core volume of the ion pair, and the reason is worth knowing.
 
+`data/alt_splits/` holds eight alternative molecule-disjoint partitions of the same rows, three per
+training set (65, 70 and 75 %), used for the paper's comparison across splits. Its
+[README](data/alt_splits/README.md) explains which compounds can move and gives the commands and results.
+
 ---
 
 ## Repository layout
@@ -244,10 +248,14 @@ hard-core volume of the ion pair, and the reason is worth knowing.
 │   ├── baselines.py           the classical baselines
 │   └── export_params.py       predicted PC-SAFT parameters as a table
 ├── data/                    the frozen benchmark (+ its own README – read it)
+│   └── alt_splits/            eight alternative splits of the same rows
 ├── scripts/
 │   ├── verify_dataset.py      30 assertions on the shipped data
 │   ├── smoke_train.py         headless end-to-end training run
 │   ├── selfcheck.py           runs every self-check; names the modules that have none
+│   ├── train_multi_val.py     one training run for the splits that share a training set
+│   ├── make_alt_splits.py     builds the 65/15/20 and 75/15/10 splits
+│   ├── make_val_test_splits.py  builds the six validation <-> test splits
 ├── docs/
 │   ├── reproducing-the-paper.md
 │   └── known-issues.md        the honest list

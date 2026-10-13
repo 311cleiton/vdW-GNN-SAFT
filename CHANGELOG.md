@@ -21,6 +21,11 @@
   each split's best epoch, read off that split's own validation set: the checkpoint a separate
   train.py run on that split would keep. It passes `--grad-clip` and `--warmup-epochs` through to
   train.py.
+- New data/alt_splits/: eight alternative molecule-disjoint partitions of the frozen rows, three per
+  training set (65, 70 and 75 %), built and verified by scripts/make_alt_splits.py and
+  scripts/make_val_test_splits.py. Every row is carried over byte-for-byte; only its `split` field
+  changes, and the frozen files are untouched. data/alt_splits/README.md explains which compounds
+  can move and gives the paper's commands and results for these splits.
 - Reproduction uses the paper's seeds 0, 3 and 4. The commands in the README, docs/ and train.py
   said `--seeds 0 1 2 3`: that trained seed 2, whose two runs both collapse, and seed 1, whose
   vdW-on run collapses after the epoch-30 restart, and it left out seed 4. The README results

@@ -29,7 +29,8 @@ Split names: 70_15_15 is the frozen split (data/train_val.csv); any other NAME i
 data/alt_splits/split_NAME/train_val.csv. Checkpoints: checkpoints/gnn_core_NAME[_vdw]_bounded_sSEED.pt,
 the name `train.py --out checkpoints/gnn_core_NAME.pt` gives. A JSON record of the run (outcome, best
 epoch and per-epoch val MAPE for every split) goes to logs/multi_val/. Model and optimizer settings
-are train.py's defaults (the published configuration: PNA, 3 core parameters, bounded head).
+are train.py's defaults (the published configuration: PNA, 3 core parameters, bounded head), except for
+--grad-clip and --warmup-epochs, which are train.py's options of the same name (both off by default).
 """
 
 from __future__ import annotations
@@ -140,6 +141,9 @@ def main():
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--epochs", type=int, default=120)
     ap.add_argument("--threads", type=int, default=16, help="as train.py --threads (16 = published runs)")
+    ap.add_argument("--grad-clip", type=float, default=0.0, help="as train.py --grad-clip (0 = off, published)")
+    ap.add_argument("--warmup-epochs", type=float, default=0.0,
+                    help="as train.py --warmup-epochs (0 = off, published)")
     ap.add_argument("--no-ckpt", nargs="*", default=[], metavar="SPLIT",
                     help="splits to track and report without writing a checkpoint (e.g. one already on disk)")
     ap.add_argument("--ckpt-dir", default="checkpoints")
@@ -167,6 +171,9 @@ def main():
     logging.info(f"CPU threads: {torch.get_num_threads()}  "
                  f"(this machine has {os.cpu_count() or '?'} logical CPUs)")
     logging.info(f"vdW {args.vdw} | seed {args.seed} | {args.epochs} epochs")
+    logging.info(f"gradient clipping: {'off' if args.grad_clip <= 0 else args.grad_clip}")
+    logging.info("warm-up after each restart: "
+                 + ("off" if args.warmup_epochs <= 0 else f"{args.warmup_epochs:g} epoch(s)"))
 
     # ---- data: every split must hold the same training units, in the same order ----
     built = {}
@@ -184,7 +191,8 @@ def main():
     vdw_mean, vdw_std = T.compute_vdw_stats(train_ds) if use_vdw else (0.0, 1.0)
     # train.py main()'s config, with its CLI defaults
     config = {"conv_type": "PNA", "hidden": 256, "depth": 6, "towers": 4, "heads": 4, "lr": 1e-3,
-              "batch_size": 16, "grad_clip": 0.0, "predict_association": False,
+              "batch_size": 16, "grad_clip": args.grad_clip, "warmup_epochs": args.warmup_epochs,
+              "predict_association": False,
               "use_vdw": use_vdw, "vdw_mean": vdw_mean, "vdw_std": vdw_std, "use_bounds": True}
     logging.info(f"modeling units: train {len(train_ds)} | val "
                  + ", ".join(f"{n} {len(built[n][1])}" for n in args.splits)
@@ -329,6 +337,7 @@ def main():
     record = {
         "script": "scripts/train_multi_val.py", "splits": args.splits, "vdw": args.vdw,
         "seed": args.seed, "epochs": args.epochs, "epochs_run": n_done[0],
+        "grad_clip": args.grad_clip, "warmup_epochs": args.warmup_epochs,
         "threads": torch.get_num_threads(), "log": log_filename,
         "started": started, "finished": time.strftime("%Y-%m-%d %H:%M:%S"), "complete": True,
         "train_loss": train_losses,

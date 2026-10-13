@@ -12,10 +12,15 @@
   the end, where the rising-loss self-check failed it -- except when the collapse came in the first
   epoch: the loss then never rises above the collapsed level, and the run passed as OK with a
   best val MAPE of 40 % or more at epoch 0. Stopping saves up to ~115 epochs per collapsed run.
+- train.py: new `--warmup-epochs` option. The learning rate rises linearly over the first
+  epoch(s) of every cosine cycle -- the start of training and each warm restart -- instead of
+  jumping straight to the cycle's peak. It is off by default (0), so the published runs are
+  unchanged: with it off, training is bit-identical to before.
 - New scripts/train_multi_val.py: one training run for several splits that share their training
   rows and differ only in validation and test. Validation never shapes training, so the run keeps
   each split's best epoch, read off that split's own validation set: the checkpoint a separate
-  train.py run on that split would keep.
+  train.py run on that split would keep. It passes `--grad-clip` and `--warmup-epochs` through to
+  train.py.
 - Reproduction uses the paper's seeds 0, 3 and 4. The commands in the README, docs/ and train.py
   said `--seeds 0 1 2 3`: that trained seed 2, whose two runs both collapse, and seed 1, whose
   vdW-on run collapses after the epoch-30 restart, and it left out seed 4. The README results

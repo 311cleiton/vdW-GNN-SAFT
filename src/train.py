@@ -54,7 +54,9 @@ A batch on which FeOs fails to converge everywhere can yield a non-finite loss; 
 poisons the weights (NaN spreads, every later epoch stays NaN). Two guards prevent that: batches
 with a non-finite loss are skipped (a no-op for healthy batches), and if validation collapses
 (non-finite MAPE / zero FeOs coverage) training stops early and keeps the best pre-collapse
-weights. `--grad-clip` (off by default) additionally caps the gradient norm.
+weights. `--grad-clip` (off by default) additionally caps the gradient norm, and `--warmup-epochs` (off by
+default) raises the learning rate linearly over the first epoch(s) of every cosine cycle -- the start of
+training and each warm restart -- instead of jumping straight to the cycle's peak.
 
 A model can also collapse while FeOs still converges everywhere: the bounded head saturates, every
 prediction stops changing, and val MAPE freezes to the last digit (the "Esper mode" in
@@ -278,12 +280,24 @@ def train_model(config, train_ds, val_ds, deg, epochs, report_fn=None, verbose=T
     grad_clip = float(config.get("grad_clip", 0.0))
     train_loader = DataLoader(train_ds, batch_size=config["batch_size"], shuffle=True, collate_fn=collate)
     val_loader = DataLoader(val_ds, batch_size=config["batch_size"], collate_fn=collate)
+    # Linear warm-up over the first `warmup_epochs` of every cosine cycle (0 = off, the published runs): the
+    # learning rate of step k after a restart is the schedule's value times (k + 1) / warmup_steps.
+    warmup_epochs = float(config.get("warmup_epochs", 0.0))
+    warmup_steps = max(1, round(warmup_epochs * len(train_loader))) if warmup_epochs > 0 else 0
+    since_restart = 0
 
     history, best, best_state = [], float("inf"), None
     for epoch in range(epochs):
         model.train()
         run_loss, n_batches, n_skipped = 0.0, 0, 0
+        peak_lr = [group["lr"] for group in opt.param_groups]   # the schedule's value for this epoch
+        if sched.T_cur == 0:                                     # a cosine cycle starts with this epoch
+            since_restart = 0
         for big, T, P, rho, MW, vdw, idx in train_loader:
+            if since_restart < warmup_steps:
+                for group, lr in zip(opt.param_groups, peak_lr):
+                    group["lr"] = lr * (since_restart + 1) / warmup_steps
+            since_restart += 1
             opt.zero_grad()
             rho_pred, valid = _density_pass(model, big, T, P, rho, MW, vdw, idx)
             loss = huber_relative_loss(rho_pred, rho, delta=0.01, mask=valid)
@@ -298,6 +312,8 @@ def train_model(config, train_ds, val_ds, deg, epochs, report_fn=None, verbose=T
                 torch.nn.utils.clip_grad_norm_(model.parameters(), grad_clip)
             opt.step()
             run_loss += float(loss.detach()); n_batches += 1
+        for group, lr in zip(opt.param_groups, peak_lr):
+            group["lr"] = lr
         sched.step()
 
         train_loss = run_loss / max(n_batches, 1)
@@ -656,6 +672,10 @@ def main():
     ap.add_argument("--grad-clip", type=float, default=0.0,
                     help="Max gradient norm (0 = off). Turn on (e.g. 1.0) if training blows up to NaN. "
                          "Off by default so it doesn't change ongoing experiments' dynamics.")
+    ap.add_argument("--warmup-epochs", type=float, default=0.0,
+                    help="Raise the learning rate linearly over this many epochs at the start of every cosine "
+                         "cycle (the first epoch and each warm restart) instead of jumping to the cycle's peak "
+                         "(0 = off, as in the published runs).")
     ap.add_argument("--threads", type=int, default=16,
                     help="CPU threads for PyTorch, with or without the GUI (0 = every logical CPU). "
                          "The thread count sets the order in which sums are accumulated, so it "
@@ -710,6 +730,8 @@ def main():
                  + ("on (physical box, sigmoid-squashed head)" if args.bounds == "on"
                     else "off (softplus head)"))
     logging.info(f"gradient clipping: {'off' if args.grad_clip <= 0 else args.grad_clip}")
+    logging.info("warm-up after each restart: "
+                 + ("off" if args.warmup_epochs <= 0 else f"{args.warmup_epochs:g} epoch(s)"))
     logging.info(f"CPU threads: {torch.get_num_threads()}  "
                  f"(this machine has {os.cpu_count() or '?'} logical CPUs)")
     logging.info(f"vdW settings to sweep: {[VDW_LABELS[u] for u in args.vdws]}")
@@ -737,6 +759,7 @@ def main():
             config = {"conv_type": args.conv, "hidden": args.hidden, "depth": args.depth,
                       "towers": args.towers, "heads": args.heads, "lr": args.lr,
                       "batch_size": args.batch_size, "grad_clip": args.grad_clip,
+                      "warmup_epochs": args.warmup_epochs,
                       "predict_association": (args.params == "assoc"),
                       "use_vdw": use_vdw, "vdw_mean": vdw_mean, "vdw_std": vdw_std,
                       "use_bounds": (args.bounds == "on")}

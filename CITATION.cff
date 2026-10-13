@@ -7,10 +7,11 @@ message: >-
 type: software
 
 # Software authorship for v1.0.0 is the lead author only.
-# TODO: the co-authors of the accompanying manuscript (Georgios M. Kontogeorgis and
-#       Xiaodong Liang, Technical University of Denmark) will be added as software authors
-#       in a subsequent version. Their names are kept intact under preferred-citation
-#       below, which describes the manuscript rather than this software release.
+# TODO: the co-authors of the accompanying manuscript (Pedro A. Pessoa Filho, University of
+#       Sao Paulo, and Xiaodong Liang, Technical University of Denmark) will be added as
+#       software authors in a subsequent version. Their names are kept intact under
+#       preferred-citation below, which describes the manuscript rather than this software
+#       release.
 authors:
   - given-names: Cleiton
     name-particle: S.
@@ -56,9 +57,9 @@ preferred-citation:
       name-particle: S.
       family-names: Beraldo
       orcid: "https://orcid.org/0009-0008-8798-2882"
-    - given-names: Georgios
-      name-particle: M.
-      family-names: Kontogeorgis
+    - given-names: Pedro
+      name-particle: A.
+      family-names: Pessoa Filho
     - given-names: Xiaodong
       family-names: Liang
   year: 2026
